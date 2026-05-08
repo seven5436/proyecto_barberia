@@ -1,7 +1,15 @@
 package com.barberia.ms_clientes.model;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "barberos")
@@ -9,11 +17,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Barbero {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDelBarbero;
+    
+    @NotBlank (message = "El nombre es obligatorio")
+    @Size (min = 3, max = 20, message="El nombre debe tener más de 3 carácteres") 
+    private String nombre;
 
-    private String nombreDelBarbero;
-    private String especialidadDelBarbero;
-    private Boolean estaActivo;
+    @NotBlank (message = "La especialidad es obligatoria")
+    private String especialidad;
+    private String telefono;
 
 }
