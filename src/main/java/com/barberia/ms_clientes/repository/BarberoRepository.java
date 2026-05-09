@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface BarberoRepository extends JpaRepository<Barbero, Long> {
 
-    List<Barbero> findByEstaActivoTrue();
+    List<Barbero> findByEstado(Boolean estado);
 
-    List<Barbero> findByEspecialidadDelBarbero(String especialidad);
+    List<Barbero> findByEspecialidadBarbero(String especialidad);
 }
