@@ -1,5 +1,4 @@
-
-package com.barberia.ms_clientes.model;
+package com.barberia.ms_clientes.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cita {
+public class CitaDTO {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCita;
 
