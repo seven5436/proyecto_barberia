@@ -1,8 +1,20 @@
 package com.barberia.ms_clientes.model;
 
-import jakarta.persistence.*;
-import lombok.*;
 import java.time.LocalDateTime;
+
+import org.hibernate.annotations.Collate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "facturas")
 @Data
@@ -10,10 +22,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Factura {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDeLaFactura;
+    private Long idFactura;
 
-    private Long idDeLaCitaFacturada;
-    private Double montoTotalCobrado;
+    @OneToOne
+    @JoinColumn(name="id_cita", nullable= false, unique=true)
+    private Cita cita;
+
+    @Column(nullable = false)
+    private Double montoTotal;
+
+    @Column(nullable=false)
     private String metodoDePago;
-    private LocalDateTime fechaYHoraDeEmision;
+
+    @Column(nullable = false)
+    private LocalDateTime fechaEmision;
 }

@@ -19,6 +19,12 @@ public class CitaService {
     @Autowired
     private CitaRepository citaRepository;
 
+    public CitaDTO agendarCita(Cita nuevaCita) {
+        nuevaCita.setEstadoCita("Pendiente");
+        Cita guardada = citaRepository.save(nuevaCita);
+        return convertirADTO(guardada);
+}
+
     public List<CitaDTO> obtenerTodos(){
         return citaRepository.findAll().stream()
                 .map(this::convertirADTO)
@@ -44,6 +50,15 @@ public class CitaService {
         } catch (RuntimeException e) {
             return e.getMessage();
         }
+    }
+
+    public CitaDTO cambiarEstadoCita(Long idCita, String nuevoEstado) {
+    Cita cita = citaRepository.findById(idCita)
+            .orElseThrow(() -> new RuntimeException("Cita no encontrada"));
+    cita.setEstadoCita(nuevoEstado);
+    
+    return convertirADTO(citaRepository.save(cita));
+
     }
 
     public Cita guardarCita(Cita Cita) {
@@ -75,11 +90,12 @@ public class CitaService {
     }
     
 
-    private CitaDTO convertirADTO(Cita Cita){
+    private CitaDTO convertirADTO(Cita cita){
         CitaDTO dto = new CitaDTO();
-        dto.setFechaCita(Cita.getFechaCita());
-        dto.setHoraInicio(Cita.getHoraInicio());
-        dto.setEstadoCita(Cita.getEstadoCita());
+        dto.setIdCita(cita.getIdCita());
+        dto.setFechaCita(cita.getFechaCita());
+        dto.setHoraInicio(cita.getHoraInicio());
+        dto.setEstadoCita(cita.getEstadoCita());
 
         return dto;
     }

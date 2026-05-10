@@ -1,7 +1,11 @@
 package com.barberia.ms_clientes.dto;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -9,17 +13,20 @@ import lombok.*;
 
 public class ClienteDTO {
 
-    @NotBlank(message = "el nombre del cliente es obligatorio")
-    private String nombreDelCliente;
+    private Long idCliente;
 
-    @NotBlank(message = "el apellido del cliente es obligatorio")
-    private String apellidoDelCliente;
+    @NotBlank(message="el nombre del cliente es obligatorio")
+    private String nombreCliente;
 
-    @Email(message = "el email debe tener formato valido: ejemplo@correo.com")
+    @NotBlank(message="el apellido del cliente es obligatorio")
+    private String apellidoCliente;
+
+    @Email(message="el email debe tener formato valido: ejemplo@correo.com")
     @NotBlank(message = "el email es obligatorio")
-    private String emailDelCliente;
+    private String emailCliente;
     
+    @NotBlank(message="El teléfono es obligatorio")
     @Size(min = 9, max = 12, message = "el telefono debe tener entre 9 y 12 caracteres")
-    private String telefonoDelCliente;
+    private String telefonoCliente;
 
 }
