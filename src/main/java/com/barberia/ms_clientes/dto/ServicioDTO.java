@@ -27,7 +27,6 @@ public class ServicioDTO {
     @Positive(message = "El precio del servicio debe ser un valor positivo")
     private Double precioDelServicio;
 
-    //ATRIBUTO NECESARIO(?)
     @NotNull(message = "La duración del servicio es obligatoria")
     @Min(value = 5, message = "La duración mínima de un servicio debe ser de 5 minutos")
     @Max(value = 480, message = "La duración no puede exceder los 480 minutos (8 horas)")

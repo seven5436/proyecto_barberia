@@ -16,20 +16,17 @@ public class ServiciosService {
     @Autowired
     private ServiciosRepository repo;
 
-    // trae todos los servicios
     public List<Servicios> traerTodos() {
         log.info("buscando todos los servicios");
         return repo.findAll();
     }
 
-    // busca un servicio por su id
     public Servicios traerPorId(Long id) {
         log.info("buscando servicio con id: {}", id);
         return repo.findById(id)
             .orElseThrow(() -> new RuntimeException("no existe el servicio con id: " + id));
     }
 
-    // guarda un nuevo servicio
     public Servicios guardar(ServiciosDTO datos) {
         log.info("guardando nuevo servicio");
         Servicios nuevo = new Servicios();
@@ -39,7 +36,6 @@ public class ServiciosService {
         return repo.save(nuevo);
     }
 
-    // actualiza un servicio existente
     public Servicios actualizar(Long id, ServiciosDTO datos) {
         log.info("actualizando servicio con id: {}", id);
         Servicios servicio = traerPorId(id);
@@ -49,7 +45,6 @@ public class ServiciosService {
         return repo.save(servicio);
     }
 
-    // elimina un servicio
     public void eliminar(Long id) {
         log.info("eliminando servicio con id: {}", id);
         traerPorId(id);

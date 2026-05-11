@@ -1,14 +1,22 @@
 package com.barberia.ms_clientes.model;
 
-import jakarta.persistence.*;
-import lombok.*;
 import java.time.LocalDate;
 
-@Entity 
-@Table(name = "resenas") 
-@Data 
-@NoArgsConstructor 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "resenas")
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
+
 public class Resena {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDeLaResena;

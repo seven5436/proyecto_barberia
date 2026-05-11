@@ -16,20 +16,17 @@ public class MetodoPagoService {
     @Autowired
     private MetodoPagoRepository repo;
 
-    // trae todos los metodos de pago
     public List<MetodoPago> traerTodos() {
         log.info("buscando todos los metodos de pago");
         return repo.findAll();
     }
 
-    // busca un metodo de pago por su id
     public MetodoPago traerPorId(Long id) {
         log.info("buscando metodo de pago con id: {}", id);
         return repo.findById(id)
             .orElseThrow(() -> new RuntimeException("no existe el metodo de pago con id: " + id));
     }
 
-    // guarda un nuevo metodo de pago
     public MetodoPago guardar(MetodoPagoDTO datos) {
         log.info("guardando nuevo metodo de pago: {}", datos.getNombre());
         MetodoPago nuevo = new MetodoPago();
@@ -38,7 +35,6 @@ public class MetodoPagoService {
         return repo.save(nuevo);
     }
 
-    // actualiza un metodo de pago existente
     public MetodoPago actualizar(Long id, MetodoPagoDTO datos) {
         log.info("actualizando metodo de pago con id: {}", id);
         MetodoPago metodo = traerPorId(id);
@@ -47,7 +43,6 @@ public class MetodoPagoService {
         return repo.save(metodo);
     }
 
-    // elimina un metodo de pago
     public void eliminar(Long id) {
         log.info("eliminando metodo de pago con id: {}", id);
         traerPorId(id);

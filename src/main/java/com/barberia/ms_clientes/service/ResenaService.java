@@ -17,13 +17,11 @@ public class ResenaService {
     @Autowired
     private ResenaRepository resenaRepository;
 
-    // IE 2.1.2: CRUD - Obtener todas las reseñas para el feedback del local
     public List<Resena> traerTodasLasResenas() {
         log.info("Consultando todas las reseñas registradas en el sistema");
         return resenaRepository.findAll();
     }
 
-    // IE 2.3.1: Uso de Optional y excepciones para evitar errores de puntero nulo
     public Resena traerResenaPorId(Long id) {
         log.info("Buscando reseña con ID: {}", id);
         return resenaRepository.findById(id)
@@ -51,7 +49,6 @@ public class ResenaService {
         resenaRepository.deleteById(id);
     }
 
-    // Método para el Controller (Usando el patrón de Referencia a Método ::)
     public ResenaDTO convertirAResenaDTO(Resena resena) {
         return ResenaDTO.builder()
                 .idDeLaResena(resena.getIdDeLaResena())

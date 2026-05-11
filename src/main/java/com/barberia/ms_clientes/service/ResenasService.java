@@ -16,20 +16,17 @@ public class ResenasService {
     @Autowired
     private ResenasRepository repo;
 
-    // trae todas las resenas
     public List<Resenas> traerTodas() {
         log.info("buscando todas las resenas");
         return repo.findAll();
     }
 
-    // busca una resena por su id
     public Resenas traerPorId(Long id) {
         log.info("buscando resena con id: {}", id);
         return repo.findById(id)
             .orElseThrow(() -> new RuntimeException("no existe la resena con id: " + id));
     }
 
-    // guarda una nueva resena
     public Resenas guardar(ResenasDTO datos) {
         log.info("guardando nueva resena");
         Resenas nueva = new Resenas();
@@ -39,7 +36,6 @@ public class ResenasService {
         return repo.save(nueva);
     }
 
-    // actualiza una resena existente
     public Resenas actualizar(Long id, ResenasDTO datos) {
         log.info("actualizando resena con id: {}", id);
         Resenas resena = traerPorId(id);
@@ -49,7 +45,6 @@ public class ResenasService {
         return repo.save(resena);
     }
 
-    // elimina una resena
     public void eliminar(Long id) {
         log.info("eliminando resena con id: {}", id);
         traerPorId(id);

@@ -16,20 +16,17 @@ public class ProductosService {
     @Autowired
     private ProductosRepository repo;
 
-    // trae todos los productos por sucursal
     public List<Productos> traerTodos() {
         log.info("buscando todos los productos por sucursal");
         return repo.findAll();
     }
 
-    // busca un producto por su id
     public Productos traerPorId(Long id) {
         log.info("buscando producto por sucursal con id: {}", id);
         return repo.findById(id)
             .orElseThrow(() -> new RuntimeException("no existe el producto con id: " + id));
     }
 
-    // guarda un nuevo producto
     public Productos guardar(ProductosDTO datos) {
         log.info("guardando nuevo producto por sucursal");
         Productos nuevo = new Productos();
@@ -39,7 +36,6 @@ public class ProductosService {
         return repo.save(nuevo);
     }
 
-    // actualiza un producto existente
     public Productos actualizar(Long id, ProductosDTO datos) {
         log.info("actualizando producto por sucursal con id: {}", id);
         Productos producto = traerPorId(id);
@@ -49,7 +45,6 @@ public class ProductosService {
         return repo.save(producto);
     }
 
-    // elimina un producto
     public void eliminar(Long id) {
         log.info("eliminando producto por sucursal con id: {}", id);
         traerPorId(id);
