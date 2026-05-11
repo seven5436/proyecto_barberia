@@ -22,7 +22,7 @@ import com.barberia.ms_clientes.service.ServicioService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/servicios")
+@RequestMapping("/api/v1/servicios")
 public class ServicioController {
 
     @Autowired
