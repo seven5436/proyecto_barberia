@@ -1,7 +1,6 @@
 package com.barberia.ms_clientes.controller;
 
 import com.barberia.ms_clientes.dto.ClienteDTO;
-import com.barberia.ms_clientes.model.Cliente;
 import com.barberia.ms_clientes.service.ClienteService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

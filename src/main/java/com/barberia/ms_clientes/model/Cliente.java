@@ -2,9 +2,16 @@ package com.barberia.ms_clientes.model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "clientes")
@@ -14,20 +21,18 @@ import lombok.*;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDelCliente;
+    private Long idCliente;
 
-    @Size(min = 3, max = 15, message = "El nombre debe tener al menos 3 carácteres")
     @Column(nullable = false, length = 15)
-    private String nombreDelCliente;
+    private String nombreCliente;
 
-    @Size(min = 3, max = 15, message = "El apellido debe tener al menos 3 carácteres")
     @Column(nullable = false, length = 15)
-    private String apellidoDelCliente;
+    private String apellidoCliente;
 
     @Column(unique = true)
-    private String emailDelCliente;
+    private String emailCliente;
     
-    private String telefonoDelCliente;
+    private String telefonoCliente;
     private LocalDate fechaRegistro;
 
 }

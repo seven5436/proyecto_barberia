@@ -81,10 +81,8 @@ public class BarberoService {
         BarberoDTO dto = new BarberoDTO();
         dto.setTelefonoBarbero(barbero.getTelefonoBarbero());
         dto.setNombreBarbero(barbero.getNombreBarbero());
-        dto.setEspecialidad(barbero.getEspecialidadBarbero());
+        dto.setEspecialidadBarbero(barbero.getEspecialidadBarbero());
         dto.setTelefonoBarbero(barbero.getTelefonoBarbero());
-        dto.setEstado(barbero.getEstado());
-
         return dto;
     }
 
