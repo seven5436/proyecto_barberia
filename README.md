@@ -266,5 +266,3 @@ curl -X POST http://localhost:8080/api/v1/clientes \
 ## Estado del proyecto
 
 **El proyecto está en desarrollo activo.** Esto significa que algunas funcionalidades están terminadas, otras a medio hacer y puede que encuentres cosas que todavía no funcionen del todo bien. El equipo está trabajando en mejorar y unificar las distintas partes que cada integrante implementó en sus propias ramas.
-
-Si encuentras algún error o algo raro, lo mejor es comentarlo con el equipo antes de asumir que es un problema tuyo.
