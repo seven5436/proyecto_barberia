@@ -60,7 +60,7 @@ public class ProductoService {
 
     public ProductoDTO convertirAProductoDTO(Producto producto) {
             ProductoDTO productoDTO = new ProductoDTO();
-            productoDTO.setIdDelProducto(producto.getIdDelProducto());
+            productoDTO.setIdDelProducto(producto.getIdProducto());
             productoDTO.setNombreDelProducto(producto.getNombreDelProducto());
             productoDTO.setCantidadEnStock(producto.getCantidadEnStock());
             productoDTO.setPrecioUnitarioDelProducto(producto.getPrecioUnitarioDelProducto());

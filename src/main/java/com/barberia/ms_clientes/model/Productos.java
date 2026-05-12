@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +23,9 @@ public class Productos {
     private Long id;
 
     private Long idSucursal;
-    private Long idProducto;
+
+    @ManyToOne
+    @JoinColumn(name="id_producto")
+    private Producto producto;
     private Integer stock;
 }
