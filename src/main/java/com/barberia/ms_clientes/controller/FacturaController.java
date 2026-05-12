@@ -14,9 +14,8 @@ public class FacturaController {
     private FacturaService facturaService;
 
     @PostMapping("/emitir")
-    public ResponseEntity<FacturaDTO> emitir(@RequestParam Long idCita, 
-                                            @RequestParam Double monto, 
+    public ResponseEntity<FacturaDTO> emitir(@RequestParam Long idCita,
                                             @RequestParam String metodo) {
-        return ResponseEntity.ok(facturaService.generarFactura(idCita, monto, metodo));
+        return ResponseEntity.ok(facturaService.generarFactura(idCita, metodo));
     }
 }
