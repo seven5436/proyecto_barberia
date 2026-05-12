@@ -20,11 +20,11 @@ public class FacturaService {
     @Autowired
     private CitaRepository citaRepository;
 
-    public FacturaDTO generarFactura(Long idCita, Double monto, String metodo) {
-        log.info("Generando factura para la cita: {}", idCita);
-
+    public FacturaDTO generarFactura(Long idCita, String metodo) {
         Cita cita = citaRepository.findById(idCita)
-                .orElseThrow(() -> new RuntimeException("Cita no encontrada"));
+                .orElseThrow(()-> new RuntimeException("Cita no encontrada"));
+        
+        Double costoFinal = cita.getServicio().getPrecioDelServicio();
 
         if (facturaRepository.findByCitaIdCita(idCita).isPresent()) {
             throw new RuntimeException("Esta cita ya fue facturada anteriormente");
@@ -32,7 +32,7 @@ public class FacturaService {
 
         Factura factura = new Factura();
         factura.setCita(cita);
-        factura.setMontoTotal(monto);
+        factura.setMontoTotal(costoFinal);
         factura.setMetodoDePago(metodo);
         factura.setFechaEmision(LocalDateTime.now());
 

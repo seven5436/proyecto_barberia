@@ -35,4 +35,8 @@ public class Cita {
     private LocalDate fechaCita;
     private LocalTime horaInicio;
     private String estadoCita;
+
+    @ManyToOne
+    @JoinColumn(name = "id_servicio")
+    private Servicio servicio;
 }
